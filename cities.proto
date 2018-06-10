@@ -1,0 +1,27 @@
+syntax = "proto2";
+
+package gisdatascience;
+
+message City_prop {
+  required string name = 1;
+  required float lat = 2;
+  required float lon = 3;
+  required string country = 4;
+  required int32 population = 5;
+
+  enum ISOcodeType {
+    ISO2 = 0;
+    ISO3 = 1;
+  }
+
+  message ISOcode {
+    required string code = 1;
+    optional ISOcodeType type = 2 [default = ISO2];
+  }
+  
+  repeated ISOcode isocods = 6;
+
+}
+message Cities {
+  repeated City_prop City = 1;
+}
